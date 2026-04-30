@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Add Doctor</h2>
+<form action="{{ url_for('admin_logic.add_doctor') }}" method="post" style="text-align:center;">
+    <table style="margin:auto;">
+        <tr>
+            <td><label for="username">Username:</label></td>
+            <td><input type="text" name="username" id="username" required></td>
+        </tr>
+        <tr>
+            <td><label for="password">Password:</label></td>
+            <td><input type="password" name="password" id="password" required></td>
+        </tr>
+        <tr>
+            <td><label for="name">Name:</label></td>
+            <td><input type="text" name="name" id="name"></td>
+        </tr>
+        <tr>
+            <td><label for="department_id">Department:</label></td>
+            <td>
+                <select name="department_id" id="department_id" required>
+                    <option value="">-- Select Department --</option>
+                    {% for dept in departments %}
+                    <option value="{{ dept[0] }}">{{ dept[1] }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="quali">Qualification:</label></td>
+            <td><input type="text" name="quali" id="quali"></td>
+        </tr>
+        <tr>
+            <td><label for="exp">Experience Years:</label></td>
+            <td><input type="text" name="exp" id="exp"></td>
+        </tr>
+        <tr>
+            <td><label for="phone">Phone:</label></td>
+            <td><input type="text" name="phone" id="phone"></td>
+        </tr>
+        <tr>
+            <td>Status:</td>
+            <td>
+                <label><input type="radio" name="status" value="1" checked> Active</label>
+                <label><input type="radio" name="status" value="0"> Inactive</label>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <button type="submit">Add Doctor</button>
+</form>
+{% endblock %}

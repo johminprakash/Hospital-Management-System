@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if error %}
+<div style="text-align: center; color: #ff6b6b; background-color: rgba(255,0,0,0.1); border: 1px solid #ff6b6b; padding: 15px; margin: 20px auto; width: 60%; border-radius: 8px;">
+    <strong>⚠ Booking Conflict:</strong> {{ error }}
+    <br><br>
+    <a href="javascript:history.back()" style="color: white; background-color: #555; padding: 8px 16px; border-radius: 4px; text-decoration: none;">← Go Back and Select Another Slot</a>
+</div>
+{% else %}
+<form method="POST" action="{{ url_for('patient_logic.appointment_confirmed') }}">
+    <input type="hidden" name="doctor_id" value="{{ doctor[0] }}">
+    <input type="hidden" name="date" value="{{ date }}">
+    <input type="hidden" name="time" value="{{ time }}">
+    <input type="hidden" name="avai_id" value="{{ avai_id }}">
+    <input type="hidden" name="consult" value="{{consult}}">
+    
+<div style="text-align: center; color:white">
+    <h2>Confirm Details</h2>
+    <br>
+    <table style="margin: 0 auto; ">
+        <tr>
+            <td>Department</td>
+            <td style="text-align: left;">:{{doctor[2]}}</td>
+        </tr>
+        <tr>
+            <td>Doctor Name</td>
+            <td style="text-align: left;">:{{doctor[1]}}</td>
+        </tr>
+        <tr>
+            <td>Consultancy Type</td>
+            <td style="text-align: left;">:{{consult}}</td>
+        </tr>
+        <tr>
+            <td>Date</td>
+            <td style="text-align: left;">:{{date}}</td>
+        </tr>
+        <tr>
+            <td>Time</td>
+            <td style="text-align: left;">:{{time}}</td>
+        </tr>
+    </table>
+    <br>
+    <button type="submit" class="form_btn">Book Appointment</button>
+</div>
+</form>
+{% endif %}
+{% endblock %}
