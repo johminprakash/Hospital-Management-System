@@ -9,6 +9,9 @@
 A comprehensive management solution designed to digitize and streamline hospital workflows, patient records, and staff coordination.
 
 
+**Website:** https://web-production-bdf67.up.railway.app/
+
+
 
 **Overview**
 
@@ -50,7 +53,7 @@ This project provides a robust platform for healthcare facilities to manage dail
 
 
 
-*2. Set Up Virtual Environment* 	
+*2. Set Up Virtual Environment*
 
 &#x20;  python -m venv venv
 
